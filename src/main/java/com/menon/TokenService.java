@@ -20,7 +20,7 @@ public class TokenService
 
         log.info("TokenService.validateToken() called with token: " + token);
 
-        WebClient authValidateWebClient = ctx.getBean("authValidateWebClient", WebClient.class);
+        WebClient authValidateWebClient = ctx.getBean("customerValidateWebClient", WebClient.class);
 
         log.info("Calling auth-service to validate token: " + token);
         // forward a request to the auth service for validation

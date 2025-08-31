@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,15 +13,15 @@ import java.util.Random;
 @RestController
 @RequestMapping("product/v1")
 public class MainRestController {
+
     private static final Logger logger = LoggerFactory.getLogger(MainRestController.class);
+
     @Autowired
     ProductRepository productRepository;
     @Autowired
     TokenService tokenService;
     @Autowired
     private ApplicationContext ctx;
-    @Autowired
-    private RedisTemplate<String, String> redisTemplate;
 
     @PostMapping("create")
     public ResponseEntity<?> floatProject(@RequestBody Product product, @RequestHeader("Authorization") String token) {
@@ -138,7 +137,6 @@ public class MainRestController {
         }
     }
 
-
     private static void setUpdatedProductDetails(Product updatedProduct, Product existingProduct) {
         existingProduct.setName(updatedProduct.getName());
         existingProduct.setDescription(updatedProduct.getDescription());
@@ -148,12 +146,4 @@ public class MainRestController {
         existingProduct.setMessages(updatedProduct.getMessages());
     }
 
-
-    public ApplicationContext getCtx() {
-        return ctx;
-    }
-
-    public void setCtx(ApplicationContext ctx) {
-        this.ctx = ctx;
-    }
 }
