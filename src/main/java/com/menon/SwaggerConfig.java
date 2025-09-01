@@ -14,7 +14,7 @@ public class SwaggerConfig {
                 .info(
                         new Info()
                                 .title("Product-Service Rest Api")
-                                .description("Rest Api for Social Service of Egov")
+                                .description("Rest Api for Payment Service of Ecommerce App")
                                 .version("1.0"));
     }
 }
